@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wallet-new</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .coin-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 10px;
+            border-bottom: 1px solid #bbaaaa;
+            color: #fff;
+        }
+
+        .coin-info {
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+
+        .coin-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .total-value-box {
+            background-color: #0d1531;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-main">
+        <div class="main-inner text-dark">
+
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark shadow-sm py-2 sticky-top ">
+                <div class="container-xl">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/logo.png" alt="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-md-4 me-auto">
+                            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="wallet.html">Wallet</a></li>
+                            <li class="nav-item"><a class="nav-link" href="future.html">Future</a></li>
+                            <li class="nav-item"><a class="nav-link" href="deposit-withdraw.html">Deposit/Withdraw</a>
+                            </li>
+
+                            <div class="nav-item dropdown d-lg-none mb-2">
+                                <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    More
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="my-page.html">My Page</a></li>
+                                    <li><a class="dropdown-item" href="login.html">Login</a></li>
+
+                                    <li><a class="dropdown-item" href="signup.html">Sign Up</a></li>
+                                </ul>
+                            </div>
+                        </ul>
+                        <div class="d-lg-flex d-none align-items-center gap-3">
+                            <a href="login.html" class="btn btn-outline-light btn-sm">Login</a>
+                            <a href="signup.html" class="btn btn-warning btn-sm">Sign Up</a>
+
+                        </div>
+                        <form class="d-flex align-items-center gap-2 ms-lg-3">
+                            <!-- Avatar Dropdown in Header -->
+                            <div class="dropdown me-3 d-none d-lg-block">
+                                <a href="#"
+                                    class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                                    id="userDropdown" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                        class="me-2" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2c-3.2 0-9.5 1.6-9.5 4.8V22h19v-3.2c0-3.2-6.3-4.8-9.5-4.8z">
+                                        </path>
+                                    </svg>
+                                    <span class="d-none d-md-inline"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end text-small shadow"
+                                    aria-labelledby="userDropdown" data-bs-popper="static">
+                                    <li><a class="dropdown-item" href="my-page.html">My Page</a></li>
+                                    <li><a class="dropdown-item" href="login.html">Login</a></li>
+                                    <li><a class="dropdown-item" href="signup.html">Sign Up</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    EN
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="my-page.html">EN</a></li>
+                                    <li><a class="dropdown-item" href="#">KR</a></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Market Ticker -->
+            <div class="market-ticker text-light">
+                <div class="container-xl d-flex align-items-center justify-content-between">
+                    <div class="ticker-item"><i class="fa-brands fa-btc text-warning"></i> BTC/USDT <span
+                            class="text-success">+2.1%</span> $65,000
+                    </div>
+                    <div class="ticker-item"><i class="fa-brands fa-ethereum text-primary"></i> ETH/USDT <span
+                            class="text-danger">-0.8%</span> $3,400
+                    </div>
+                    <div class="ticker-item"><i class="fa-solid fa-coins text-info"></i> USDT/USD <span
+                            class="text-success">+0.01%</span> $1.00
+                    </div>
+                    <div class="ticker-item"><i class="fa-solid fa-d text-success"></i> DAI/USDT <span
+                            class="text-success">+0.02%</span> $1.00
+                    </div>
+                    <div class="ticker-item"><i class="fa-solid fa-b text-warning"></i> BNB/USDT <span
+                            class="text-success">+1.5%</span> $600
+                    </div>
+                    <!-- Add more as needed -->
+                </div>
+            </div>
+
+            <!-- main start -->
+            <main class="py-3 py-lg-5 my-3">
+                <div class="container-xl">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Wallet Balance Card -->
+                            <div class="card bg-dark text-light rounded-4 shadow-sm mb-4 border-0">
+                                <div class="card-body text-center py-4">
+                                    <div class="mb-2">
+                                        <i class="fa-solid fa-wallet fa-2x text-warning"></i>
+                                    </div>
+                                    <h4 class="fw-bold mb-1">0 USDT</h4>
+                                    <div class="small text-secondary mb-3">≈ 0.00 USD</div>
+                                    <div class="d-flex justify-content-center gap-3 mt-2">
+                                        <a href="deposit-withdraw.html"
+                                            class="btn btn-warning rounded-pill px-4 fw-semibold">
+                                            <i class="fa-solid fa-arrow-down me-2"></i>Deposit
+                                        </a>
+                                        <a href="deposit-withdraw.html"
+                                            class="btn btn-outline-warning rounded-pill px-4 fw-semibold">
+                                            <i class="fa-solid fa-arrow-up me-2"></i>Withdraw
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Your Assets -->
+                            <div class="card bg-dark text-light rounded-4 shadow-sm border-0 mb-4">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="fw-bold mb-0">Your Crypto Assets</h5>
+                                        <a href="my-transaction.html" class="btn btn-sm btn-outline-light rounded-pill">
+                                            <i class="fa-solid fa-clock-rotate-left me-1"></i>History
+                                        </a>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-dark table-borderless align-middle mb-0">
+                                            <thead>
+                                                <tr class="text-secondary">
+                                                    <th scope="col">Coin</th>
+                                                    <th scope="col" class="text-end">Balance</th>
+                                                    <th scope="col" class="text-end">Value (USD)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="d-flex align-items-center gap-2">
+                                                        <img src="assets/img/btc.webp" class="coin-icon" alt="BTC"
+                                                            style="width:32px;height:32px;">
+                                                        <div>
+                                                            <span class="fw-semibold">BTC</span>
+                                                            <div class="small text-secondary">Bitcoin</div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-end fw-semibold">0.0000</td>
+                                                    <td class="text-end">$0.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="d-flex align-items-center gap-2">
+                                                        <img src="assets/img/eth.webp" class="coin-icon" alt="ETH"
+                                                            style="width:32px;height:32px;">
+                                                        <div>
+                                                            <span class="fw-semibold">ETH</span>
+                                                            <div class="small text-secondary">Ethereum</div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-end fw-semibold">0.0000</td>
+                                                    <td class="text-end">$0.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="d-flex align-items-center gap-2">
+                                                        <img src="assets/img/usdc.webp" class="coin-icon" alt="USDT"
+                                                            style="width:32px;height:32px;">
+                                                        <div>
+                                                            <span class="fw-semibold">USDT</span>
+                                                            <div class="small text-secondary">Tether</div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-end fw-semibold">0.0000</td>
+                                                    <td class="text-end">$0.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="d-flex align-items-center gap-2">
+                                                        <img src="assets/img/usc.webp" class="coin-icon" alt="SOL"
+                                                            style="width:32px;height:32px;">
+                                                        <div>
+                                                            <span class="fw-semibold">SOL</span>
+                                                            <div class="small text-secondary">Solana</div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-end fw-semibold">0.0000</td>
+                                                    <td class="text-end">$0.00</td>
+                                                </tr>
+                                                <!-- Add more coins as needed -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quick Actions -->
+                            <div class="row g-3 mb-4">
+                                <div class="col-6">
+                                    <a href="deposit-withdraw.html"
+                                        class="btn btn-dark w-100 py-3 rounded-3 border border-warning text-warning fw-bold shadow-sm">
+                                        <i class="fa-solid fa-arrow-down fa-lg mb-1"></i>
+                                        <div class="small">Deposit</div>
+                                    </a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="deposit-withdraw.html"
+                                        class="btn btn-dark w-100 py-3 rounded-3 border border-warning text-warning fw-bold shadow-sm">
+                                        <i class="fa-solid fa-arrow-up fa-lg mb-1"></i>
+                                        <div class="small">Withdraw</div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Info Alert -->
+                            <div class="alert alert-dark bg-dark border-warning text-warning text-center rounded-4 mt-4"
+                                role="alert">
+                                <i class="fa-solid fa-circle-info me-2"></i>
+                                For your security, always double-check wallet addresses before making deposits or
+                                withdrawals.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer mt-5 pt-4 pb-2 bg-transparent text-light">
+                <div class="container-xl bg-dark p-4 rounded-4  shadow">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <img src="assets/img/logo.png" alt="logo" style="max-width: 160px;">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h6 class="fw-bold">Our Pages</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="term-cond.html" class="text-light text-decoration-none">Wallet</a></li>
+                                <li><a href="term-cond.html" class="text-light text-decoration-none">Terms of Use</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h6 class="fw-bold">Follow Us</h6>
+                            <div class="social-icons">
+                                <a href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                                <a href="#"><i class="fa-brands fa-telegram fa-lg"></i></a>
+                                <a href="#"><i class="fa-brands fa-discord fa-lg"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-light mt-3" style="font-size:12px;">
+                        <p>Products, services, information and/or materials contained herein may not be legally
+                            available for
+                            residents of certain jurisdictions such as USA, Canada, China, Hong Kong, countries under
+                            embargoes
+                            or sanctions and/or other blacklisted countries. If such restrictions apply to you, you are
+                            prohibited from accessing the website and/or consume any services provided on this platform,
+                            you are
+                            requested to leave this website.
+                        </p>
+                        <p>
+                            YouHodler SA - Virtual Asset Service Provider (VASP) registered under No. 65 on August 9,
+                            2024, in
+                            the Virtual Asset Service Provider Register of CNV. This registration is for the purposes of
+                            control
+                            as an Obligated Entity before the Financial Information Unit (UIF) and any other regulatory
+                            body
+                            authorized to this effect within the framework of its competences, and does not imply any
+                            license or
+                            supervision by the Comisión Nacional de Valores (Argentina) over the activities carried out
+                            by the
+                            VASP.
+                        </p>
+                        <p>
+                            Cryptocurrencies are a high risk investment and cryptocurrency exchange rates have exhibited
+                            strong
+                            volatility. Exposure to potential loss could extend to your cryptocurrency investment. List
+                            of
+                            official YouHodler domains:</p>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+    <!-- script -->
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

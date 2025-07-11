@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Coin Wallet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+         body {
+            background: #0b1426;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-xl min-vh-100 d-flex align-items-center  justify-content-center py-3 py-md-5 my-3 my-lg-5">
+        <div class="w-100" style="max-width: 700px;">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <h2 class="fw-bold mb-2 text-center text-primary">Create Your Account</h2>
+                    <p class="text-center text-muted mb-4">Sign up to start trading crypto securely</p>
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="signup-fullname" class="form-label">Full Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                                    <input type="text" class="form-control" id="signup-fullname" placeholder="Enter your full name" autocomplete="name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-username" class="form-label">Username</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-user-tag"></i></span>
+                                    <input type="text" class="form-control" id="signup-username" placeholder="Choose a username" autocomplete="username" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-email" class="form-label">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="signup-email" placeholder="Enter your email" autocomplete="email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-phone" class="form-label">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                                    <input type="tel" class="form-control" id="signup-phone" placeholder="Enter your phone number" autocomplete="tel" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-password" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="signup-password" placeholder="Create a password" autocomplete="new-password" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-password2" class="form-label">Confirm Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="signup-password2" placeholder="Repeat your password" autocomplete="new-password" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-country" class="form-label">Country</label>
+                                <select class="form-select" id="signup-country" required>
+                                    <option value="">Select your country</option>
+                                    <option>United States</option>
+                                    <option>United Kingdom</option>
+                                    <option>South Korea</option>
+                                    <option>India</option>
+                                    <option>Germany</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-dob" class="form-label">Date of Birth</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-regular fa-calendar"></i></span>
+                                    <input type="date" class="form-control" id="signup-dob" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-idtype" class="form-label">ID Type</label>
+                                <select class="form-select" id="signup-idtype" required>
+                                    <option value="">Select ID type</option>
+                                    <option>Passport</option>
+                                    <option>National ID</option>
+                                    <option>Driver's License</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-id" class="form-label">ID Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-id-card"></i></span>
+                                    <input type="text" class="form-control" id="signup-id" placeholder="Enter your ID/Passport number" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-address" class="form-label">Residential Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
+                                    <input type="text" class="form-control" id="signup-address" placeholder="Enter your address" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="signup-referral" class="form-label">Referral Code (optional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa-solid fa-gift"></i></span>
+                                    <input type="text" class="form-control" id="signup-referral" placeholder="Referral code (if any)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check my-3">
+                            <input class="form-check-input" type="checkbox" id="signup-terms" required>
+                            <label class="form-check-label small" for="signup-terms">
+                                I agree to the <a href="term-cond.html" class="text-primary text-decoration-none" target="_blank">Terms of Service</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2 mb-2">Create Account</button>
+                    </form>
+                    <div class="text-center my-3 text-muted">or</div>
+                    <div class="d-grid gap-2 mb-3">
+                        <a href="#" class="btn btn-outline-secondary"><i class="fa-brands fa-google me-2"></i>Sign up with Google</a>
+                        <a href="#" class="btn btn-outline-secondary"><i class="fa-brands fa-facebook me-2"></i>Sign up with Facebook</a>
+                    </div>
+                    <p class="text-center mt-3 mb-0 text-muted">
+                        Already have an account? <a href="login.html" class="text-primary text-decoration-none">Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
