@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Futures Trading</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            background: #181A20;
+            color: #EAECEF;
+        }
+
+        .bg-dark2 {
+            background: #e7efff !important;
+        }
+
+        .bg-dark3 {
+            background: #f7faff !important;
+        }
+
+        .text-yellow {
+            color: #F0B90B !important;
+        }
+
+        .buy {
+            background: #0ECB81 !important;
+            color: #fff !important;
+        }
+
+        .sell {
+            background: #F6465D !important;
+            color: #fff !important;
+        }
+
+        .border-yellow {
+            border-color: #F0B90B !important;
+        }
+
+        .nav-tabs .nav-link.active {
+            background: #181A20;
+            color: #F0B90B;
+            border-color: #F0B90B #181A20 #181A20;
+        }
+
+        .nav-tabs .nav-link {
+            color: #0c0c0c;
+        }
+
+        .form-label {
+            font-size: 0.95em;
+        }
+
+        .account-summary {
+            font-size: 0.95em;
+        }
+
+        .order-book th,
+        .order-book td,
+        .trade-history th,
+        .trade-history td {
+            color: #090b0e;
+        }
+
+        .order-book .text-danger,
+        .trade-history .text-danger {
+            color: #F6465D !important;
+        }
+
+        .order-book .text-success,
+        .trade-history .text-success {
+            color: #0ECB81 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm py-2 sticky-top ">
+        <div class="container-xl">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-md-4 me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="wallet.html">Wallet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="future.html">Future</a></li>
+                    <li class="nav-item"><a class="nav-link" href="deposit-withdraw.html">Deposit/Withdraw</a></li>
+
+                    <div class="nav-item dropdown d-lg-none mb-2">
+                        <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            More
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="my-page.html">My Page</a></li>
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+
+                            <li><a class="dropdown-item" href="signup.html">Sign Up</a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <div class="d-lg-flex d-none align-items-center gap-3">
+                    <a href="login.html" class="btn btn-outline-light btn-sm">Login</a>
+                    <a href="signup.html" class="btn btn-warning btn-sm">Sign Up</a>
+
+                </div>
+                <form class="d-flex align-items-center gap-2 ms-lg-3">
+                    <!-- Avatar Dropdown in Header -->
+                    <div class="dropdown me-3 d-none d-lg-block">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            id="userDropdown" data-bs-toggle="dropdown" aria-expanded="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="me-2" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2c-3.2 0-9.5 1.6-9.5 4.8V22h19v-3.2c0-3.2-6.3-4.8-9.5-4.8z">
+                                </path>
+                            </svg>
+                            <span class="d-none d-md-inline"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-small shadow" aria-labelledby="userDropdown"
+                            data-bs-popper="static">
+                            <li><a class="dropdown-item" href="my-page.html">My Page</a></li>
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="signup.html">Sign Up</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            EN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="my-page.html">EN</a></li>
+                            <li><a class="dropdown-item" href="#">KR</a></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Market Ticker -->
+    <div class="market-ticker text-light">
+        <marquee class=" d-flex align-items-center justify-content-between gap-3">
+            <div class="ticker-item"><i class="fa-brands fa-btc text-warning"></i> BTC/USDT <span
+                    class="text-success">+2.1%</span> $65,000
+            </div>
+            <div class="ticker-item"><i class="fa-brands fa-ethereum text-primary"></i> ETH/USDT <span
+                    class="text-danger">-0.8%</span> $3,400
+            </div>
+            <div class="ticker-item"><i class="fa-solid fa-coins text-info"></i> USDT/USD <span
+                    class="text-success">+0.01%</span> $1.00
+            </div>
+            <div class="ticker-item"><i class="fa-solid fa-d text-success"></i> DAI/USDT <span
+                    class="text-success">+0.02%</span> $1.00
+            </div>
+            <div class="ticker-item"><i class="fa-solid fa-b text-warning"></i> BNB/USDT <span
+                    class="text-success">+1.5%</span> $600
+            </div>
+            <!-- Add more as needed -->
+        </marquee>
+    </div>
+
+    <main class="py-lg-5 my-lg-3">
+        <div class="container-fluid py-3">
+            <div class="row g-3">
+                <!-- Left: Trading & Tabs -->
+                <div class="col-lg-8">
+                    <div class="card bg-dark2 mb-3 border-yellow">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2 gap-3 flex-wrap">
+                                <div>
+                                    <span class="h5 text-yellow">ETHUSDT Perpetual</span>
+                                    <span class="badge bg-secondary ms-2">Futures</span>
+                                </div>
+                                <div>
+                                    <select id="symbol" class="form-select form-select-sm d-inline-block w-auto me-2">
+                                        <option value="BTCUSDT">BTC/USDT</option>
+                                        <option value="ETHUSDT" selected>ETH/USDT</option>
+                                        <option value="BNBUSDT">BNB/USDT</option>
+                                        <option value="SOLUSDT">SOL/USDT</option>
+                                        <option value="XRPUSDT">XRP/USDT</option>
+                                    </select>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <button type="button" class="btn btn-outline-warning timeframe-btn"
+                                            data-tf="10m">10min</button>
+                                        <button type="button" class="btn btn-outline-warning timeframe-btn active"
+                                            data-tf="30m">30min</button>
+                                        <button type="button" class="btn btn-outline-warning timeframe-btn"
+                                            data-tf="1h">1hr</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-dark3 rounded p-3 mb-3 text-center" id="chart" style="height:180px;">
+                                [30min Chart for ETHUSDT]
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-5">
+                                    <div class="card bg-dark3 mb-2">
+                                        <div class="card-body p-3">
+                                            <div class="mb-2">
+                                                <span class="fw-bold text-yellow">Trade</span>
+                                            </div>
+                                            <form>
+                                                <div class="mb-2">
+                                                    <label for="leverage" class="form-label">Leverage</label>
+                                                    <select id="leverage" class="form-select form-select-sm">
+                                                        <option>1x</option>
+                                                        <option>5x</option>
+                                                        <option>10x</option>
+                                                        <option>20x</option>
+                                                        <option>50x</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label for="orderType" class="form-label">Order Type</label>
+                                                    <select id="orderType" class="form-select form-select-sm">
+                                                        <option value="market">Market</option>
+                                                        <option value="limit">Limit</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label for="price" class="form-label">Price</label>
+                                                    <input type="number" class="form-control form-control-sm" id="price"
+                                                        placeholder="Market price" disabled>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label for="amount" class="form-label">Amount</label>
+                                                    <input type="number" class="form-control form-control-sm"
+                                                        id="amount" min="0.001" step="0.001" value="0.01">
+                                                </div>
+                                                <div class="mb-2 row">
+                                                    <div class="col">
+                                                        <label for="stopLoss" class="form-label">Stop Loss</label>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                            id="stopLoss" placeholder="Optional">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="takeProfit" class="form-label">Take Profit</label>
+                                                        <input type="number" class="form-control form-control-sm"
+                                                            id="takeProfit" placeholder="Optional">
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex gap-2 mt-2">
+                                                    <button type="button" class="btn buy w-50">Buy/Long</button>
+                                                    <button type="button" class="btn sell w-50">Sell/Short</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <ul class="nav nav-tabs mb-2" id="tradeTabs" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="orderbook-tab" data-bs-toggle="tab"
+                                                data-bs-target="#orderbook" type="button" role="tab">Order Book</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="trades-tab" data-bs-toggle="tab"
+                                                data-bs-target="#trades" type="button" role="tab">Trade History</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content bg-dark3 rounded p-2" id="tradeTabsContent">
+                                        <div class="tab-pane fade show active" id="orderbook" role="tabpanel">
+                                            <table class="table table-sm order-book mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Price(USDT)</th>
+                                                        <th>Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-danger">3,500</td>
+                                                        <td>0.12</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-danger">3,495</td>
+                                                        <td>0.08</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-success">3,490</td>
+                                                        <td>0.15</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-success">3,485</td>
+                                                        <td>0.20</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="trades" role="tabpanel">
+                                            <table class="table table-sm trade-history mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Time</th>
+                                                        <th>Price</th>
+                                                        <th>Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>12:01:10</td>
+                                                        <td class="text-success">3,490</td>
+                                                        <td>0.01</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>12:00:55</td>
+                                                        <td class="text-danger">3,495</td>
+                                                        <td>0.03</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>12:00:40</td>
+                                                        <td class="text-success">3,500</td>
+                                                        <td>0.02</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tabs for Open Orders, Positions, History -->
+                    <div class="card bg-dark2 border-yellow">
+                        <div class="card-body p-2">
+                            <ul class="nav nav-tabs mb-2" id="bottomTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="positions-tab" data-bs-toggle="tab"
+                                        data-bs-target="#positions" type="button" role="tab">Positions</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="orders-tab" data-bs-toggle="tab"
+                                        data-bs-target="#orders" type="button" role="tab">Open Orders</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="history-tab" data-bs-toggle="tab"
+                                        data-bs-target="#history" type="button" role="tab">Order History</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="bottomTabsContent">
+                                <div class="tab-pane fade show active" id="positions" role="tabpanel">
+                                    <div class="text-center text-muted py-3">No open positions</div>
+                                </div>
+                                <div class="tab-pane fade" id="orders" role="tabpanel">
+                                    <div class="text-center text-muted py-3">No open orders</div>
+                                </div>
+                                <div class="tab-pane fade" id="history" role="tabpanel">
+                                    <div class="text-center text-muted py-3">No order history</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: Account Summary -->
+                <div class="col-lg-4">
+                    <div class="card bg-dark2 border-yellow mb-3">
+                        <div class="card-body account-summary fw-semibold">
+                            <div class="fw-bold text-yellow mb-2">Account</div>
+                            <div class="mb-2">Total Equity: <span class="float-end">999,471.011 USDT</span></div>
+                            <div class="mb-2">Margin Balance: <span class="float-end">999,108.092 USDT</span></div>
+                            <div class="mb-2">Unrealized PnL: <span class="float-end text-danger">-46.007 USDT</span>
+                            </div>
+                            <div class="mb-2">Available Margin: <span class="float-end">1,111.6268 USDT</span></div>
+                            <div class="mb-2">In Order: <span class="float-end">0 USDT</span></div>
+                        </div>
+                    </div>
+                    <div class="card bg-dark2 border-yellow">
+                        <div class="card-body fw-semibold">
+                            <div class="fw-bold text-yellow mb-2">Market Info</div>
+                            <div>Mark Price: <span class="float-end">3,492.12</span></div>
+                            <div>24h Change: <span class="float-end text-success">+2.1%</span></div>
+                            <div>Funding Rate: <span class="float-end">0.0100%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-5 pt-4 pb-2 bg-transparent text-light px-2">
+        <div class="container-xl bg-dark p-4 rounded-4  shadow">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <img src="assets/img/logo.png" alt="logo" style="max-width: 160px;">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6 class="fw-bold">Our Pages</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="term-cond.html" class="text-light text-decoration-none">Wallet</a></li>
+                        <li><a href="term-cond.html" class="text-light text-decoration-none">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6 class="fw-bold">Follow Us</h6>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                        <a href="#"><i class="fa-brands fa-telegram fa-lg"></i></a>
+                        <a href="#"><i class="fa-brands fa-discord fa-lg"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-light mt-3" style="font-size:12px;">
+                <p>Products, services, information and/or materials contained herein may not be legally available for
+                    residents of certain jurisdictions such as USA, Canada, China, Hong Kong, countries under embargoes
+                    or sanctions and/or other blacklisted countries. If such restrictions apply to you, you are
+                    prohibited from accessing the website and/or consume any services provided on this platform, you are
+                    requested to leave this website.
+                </p>
+                <p>
+                    YouHodler SA - Virtual Asset Service Provider (VASP) registered under No. 65 on August 9, 2024, in
+                    the Virtual Asset Service Provider Register of CNV. This registration is for the purposes of control
+                    as an Obligated Entity before the Financial Information Unit (UIF) and any other regulatory body
+                    authorized to this effect within the framework of its competences, and does not imply any license or
+                    supervision by the Comisión Nacional de Valores (Argentina) over the activities carried out by the
+                    VASP.
+                </p>
+                <p>
+                    Cryptocurrencies are a high risk investment and cryptocurrency exchange rates have exhibited strong
+                    volatility. Exposure to potential loss could extend to your cryptocurrency investment. List of
+                    official YouHodler domains:</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
