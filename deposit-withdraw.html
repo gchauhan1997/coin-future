@@ -176,28 +176,7 @@
             </div>
         </div>
     </nav>
-
-   <!-- Market Ticker -->
-    <div class="market-ticker text-light">
-        <div class="container-xl d-flex align-items-center justify-content-between overflow-x-auto">
-            <div class="ticker-item"><i class="fa-brands fa-btc text-warning"></i> BTC/USDT <span
-                    class="text-success">+2.1%</span> $65,000
-            </div>
-            <div class="ticker-item"><i class="fa-brands fa-ethereum text-primary"></i> ETH/USDT <span
-                    class="text-danger">-0.8%</span> $3,400
-            </div>
-            <div class="ticker-item"><i class="fa-solid fa-coins text-info"></i> USDT/USD <span
-                    class="text-success">+0.01%</span> $1.00
-            </div>
-            <div class="ticker-item"><i class="fa-solid fa-d text-success"></i> DAI/USDT <span
-                    class="text-success">+0.02%</span> $1.00
-            </div>
-            <div class="ticker-item"><i class="fa-solid fa-b text-warning"></i> BNB/USDT <span
-                    class="text-success">+1.5%</span> $600
-            </div>
-            <!-- Add more as needed -->
-        </div>
-    </div>
+    
 
     <main class="py-3 py-lg-5">
 
@@ -219,7 +198,7 @@
                         <div class="card wallet-card p-4 text-light">
                             <h6 class="fw-bold mb-3">Your Crypto Assets</h6>
                             <div class="table-responsive">
-                                <table class="table align-middle mb-0">
+                                <table class="table align-middle mb-0 text-nowrap">
                                     <thead>
                                         <tr>
                                             <th>Asset</th>
@@ -261,7 +240,7 @@
         <section class="py-4">
             <div class="container-xl">
                 <div class="card wallet-card p-4">
-                    <ul class="nav nav-pills mb-4 justify-content-center" id="walletTab" role="tablist">
+                    <ul class="nav nav-pills mb-4 overflow-x-auto text-nowrap flex-nowrap" id="walletTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="deposit-tab" data-bs-toggle="pill"
                                 data-bs-target="#deposit" type="button" role="tab">Deposit</button>
@@ -299,13 +278,10 @@
                                                     <button class="btn btn-outline-secondary" type="button"><i
                                                             class="fa-regular fa-copy"></i></button>
                                                 </div>
-                                                <div class="form-text text-light">Send only the selected asset to this
+                                                <div class="form-text text-dark">Send only the selected asset to this
                                                     address.</div>
                                             </div>
-                                            <div class="mb-3">
-                                                <img src="assets/img/btc-qr.png" alt="Deposit QR" class="img-fluid"
-                                                    style="max-width:120px;">
-                                            </div>
+                                            
                                         </form>
                                     </div>
                                 </div>
@@ -393,7 +369,7 @@
                         <!-- Transaction History Tab -->
                         <div class="tab-pane fade" id="history" role="tabpanel">
                             <div class="table-responsive">
-                                <table class="table table-hover align-middle">
+                                <table class="table table-hover align-middle text-nowrap">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
