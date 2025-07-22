@@ -310,37 +310,41 @@
             <div class="row gx-2 mt-2">
                 <div class="col-md-8 main-chart-area">
                     <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container" style="height:100%;width:100%">
-                <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
-                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                        {
-                        "allow_symbol_change": true,
-                        "calendar": false,
-                        "details": false,
-                        "hide_side_toolbar": true,
-                        "hide_top_toolbar": false,
-                        "hide_legend": false,
-                        "hide_volume": false,
-                        "hotlist": false,
-                        "interval": "D",
-                        "locale": "en",
-                        "save_image": true,
-                        "style": "1",
-                        "symbol": "NASDAQ:AAPL",
-                        "theme": "light",
-                        "timezone": "Etc/UTC",
-                        "backgroundColor": "#ffffff",
-                        "gridColor": "rgba(46, 46, 46, 0.06)",
-                        "watchlist": [],
-                        "withdateranges": false,
-                        "compareSymbols": [],
-                        "studies": [],
-                        "autosize": true
-                        }
-                    </script>
-                </div>
-                <!-- TradingView Widget END -->
+                    <div class="tradingview-widget-container" style="height:100%;width:100%">
+                        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%">
+                        </div>
+                        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/"
+                                rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on
+                                    TradingView</span></a></div>
+                        <script type="text/javascript"
+                            src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                                {
+                                    "allow_symbol_change": true,
+                                        "calendar": false,
+                                            "details": false,
+                                                "hide_side_toolbar": true,
+                                                    "hide_top_toolbar": false,
+                                                        "hide_legend": false,
+                                                            "hide_volume": false,
+                                                                "hotlist": false,
+                                                                    "interval": "D",
+                                                                        "locale": "en",
+                                                                            "save_image": true,
+                                                                                "style": "1",
+                                                                                    "symbol": "NASDAQ:AAPL",
+                                                                                        "theme": "light",
+                                                                                            "timezone": "Etc/UTC",
+                                                                                                "backgroundColor": "#ffffff",
+                                                                                                    "gridColor": "rgba(46, 46, 46, 0.06)",
+                                                                                                        "watchlist": [],
+                                                                                                            "withdateranges": false,
+                                                                                                                "compareSymbols": [],
+                                                                                                                    "studies": [],
+                                                                                                                        "autosize": true
+                                }
+                            </script>
+                    </div>
+                    <!-- TradingView Widget END -->
                 </div>
 
                 <!-- middle section -->
@@ -724,8 +728,8 @@
 
             <div class="row gx-3 gy-4 mt-2 tabs-bottom-section">
                 <div class="col-md-9">
-                    <ul class="nav nav-tabs footer-tabs overflow-x-auto flex-nowrap text-nowrap" id="myTab"
-                        role="tablist">
+                    <ul class="nav nav-tabs footer-tabs overflow-hidden overflow-x-auto flex-nowrap text-nowrap"
+                        id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="positions-tab" data-bs-toggle="tab"
                                 data-bs-target="#positions" type="button" role="tab" aria-controls="positions"
