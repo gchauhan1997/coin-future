@@ -4,298 +4,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binance Futures Trading - AI Redesign</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <!-- Tailwind CSS CDN (for potential future use, though custom CSS is primary here) -->
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <title>Binance Trading Interface Clone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        /* Base Styles */
+        body {
+            background-color: #1a1e26;
+            /* Dark background similar to the screenshot */
+            color: #e0e0e0;
 
-        .table>:not(caption)>*>* {
-            background-color: transparent !important;
         }
 
-        /* Utility Colors */
-        .text-yellow {
-            color: #F0B90B;
+
+
+        .sidebar-left {
+            background-color: #12151b;
+            border-right: 1px solid #333;
+            padding: 10px;
         }
 
-        .buy {
-            background: linear-gradient(45deg, #0ECB81, #09A068) !important;
-            color: #fff !important;
-            border: none;
-            box-shadow: 0 4px 15px rgba(14, 203, 129, 0.4);
-            transition: all 0.3s ease;
+        .main-chart-area {
+            background-color: #1a1e26;
+            padding: 10px;
         }
 
-        .buy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(14, 203, 129, 0.6);
+        .order-book-sidebar {
+            background-color: #12151b;
+            border-left: 1px solid #333;
+            padding: 10px;
         }
 
-        .sell {
-            background: linear-gradient(45deg, #F6465D, #D03A4C) !important;
-            color: #fff !important;
-            border: none;
-            box-shadow: 0 4px 15px rgba(246, 70, 93, 0.4);
-            transition: all 0.3s ease;
+        .trade-form-section {
+            background-color: #12151b;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
         }
 
-        .sell:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(246, 70, 93, 0.6);
+        .tabs-bottom-section {
+            background-color: #12151b;
+            padding: 10px;
+            border-top: 1px solid #333;
+            border-radius: 10px 10px 0 0;
         }
 
-        /* Glassmorphism Effect */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            /* Translucent white */
-            backdrop-filter: blur(15px) saturate(180%);
-            /* Blur the background */
-            -webkit-backdrop-filter: blur(15px) saturate(180%);
-            /* Safari support */
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            /* Subtle light border */
-            border-radius: 1.5rem;
-            /* More rounded corners */
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            /* Stronger shadow */
-            transition: all 0.3s ease;
+        .footer-account-info {
+            background-color: #12151b;
+            padding: 15px;
+            /* border-left: 1px solid #333; */
+            /* margin-top: 10px; */
         }
 
-        .glass-card:hover {
-            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-            transform: translateY(-2px);
+        .custom-card {
+            background-color: #212529;
+            /* A slightly lighter dark for cards */
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
         }
 
-        .glass-inner-card {
-            background: rgba(255, 255, 255, 0.05);
-            /* Slightly less opaque for inner cards */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+        .text-green {
+            color: #0ecb81 !important;
         }
 
-        /* Specific Component Styling */
-        .header-glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        .text-red {
+            color: #f6465d !important;
         }
 
-        .market-ticker {
-            background: rgba(0, 0, 0, 0.3);
-            /* Darker, slightly opaque ticker */
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 0.75rem 0;
+        /* Specific styles for elements within the design */
+        .header-currency-pair {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .header-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .header-change {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .order-book-table th,
+        .order-book-table td {
+            font-size: 0.85rem;
+            padding: 3px 5px;
+        }
+
+        .order-book-table .price-col {
+            width: 35%;
+        }
+
+        .order-book-table .amount-col {
+            width: 35%;
+            text-align: right;
+        }
+
+        .order-book-table .sum-col {
+            width: 30%;
+            text-align: right;
+        }
+
+        .trade-form-btn-group .btn {
             font-size: 0.9rem;
-            white-space: nowrap;
-            /* Ensure content stays on one line for marquee */
+            padding: 5px 10px;
         }
 
-        .market-ticker span {
-            padding-right: 3rem;
-            /* Spacing between ticker items */
+        . {
+            background-color: #2b3035;
+            color: #e0e0e0;
+            border: 1px solid #444;
         }
 
-        .form-control,
-        .form-select {
-            background: rgba(255, 255, 255, 0.08);
-            /* Translucent input fields */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #EAECEF;
-            border-radius: 0.75rem;
-            padding: 0.75rem 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        .:focus {
+            background-color: #2b3035;
+            color: #e0e0e0;
+            border-color: #6c757d;
+            box-shadow: none;
         }
 
-        .form-control::placeholder {
-            color: rgba(234, 236, 239, 0.8);
-            /* Brighter placeholder */
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: #F0B90B;
-            box-shadow: 0 0 0 0.25rem rgba(240, 185, 11, 0.25);
-            background: rgba(255, 255, 255, 0.12);
-            /* Slightly brighter on focus */
-            color: #EAECEF;
-        }
-
-        .form-select option {
-            background-color: #1A1D24;
-            /* Dark background for dropdown options */
-            color: #EAECEF;
-        }
-
-        .card-header {
-            background: rgba(255, 255, 255, 0.05);
-            /* Header of cards */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 1.5rem;
-            border-top-left-radius: 1.5rem;
-            /* Match card border-radius */
-            border-top-right-radius: 1.5rem;
-        }
-
-        .glass-inner-card .card-header {
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-        }
-
-
-        .nav-tabs .nav-link {
-            color: rgba(234, 236, 239, 0.7);
-            border: none;
-            border-radius: 0.75rem;
-            padding: 0.75rem 1.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .nav-tabs .nav-link.active {
-            background: #F0B90B;
-            color: #181A20;
-            /* Dark text on active yellow tab */
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(240, 185, 11, 0.3);
-        }
-
-        .nav-tabs .nav-link:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.05);
-            color: #F0B90B;
-        }
-
-        .btn {
-            border-radius: 0.75rem;
-            padding: 0.75rem 1.25rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn-warning {
-            background: #F0B90B;
-            color: #181A20;
+        .btn-green-custom {
+            background-color: #0ecb81;
+            color: white;
             border: none;
         }
 
-        .btn-warning:hover {
-            background: #FFD700;
-            color: #181A20;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(240, 185, 11, 0.4);
+        .btn-green-custom:hover {
+            background-color: #0cbb75;
         }
 
-        .btn-outline-warning {
-            border-color: #F0B90B;
-            color: #F0B90B;
-            background: transparent;
+        .btn-red-custom {
+            background-color: #f6465d;
+            color: white;
+            border: none;
         }
 
-        .btn-outline-warning:hover {
-            background: rgba(240, 185, 11, 0.1);
-            color: #FFD700;
-            border-color: #FFD700;
+        .btn-red-custom:hover {
+            background-color: #e53c51;
         }
 
-        .table,
-        .table tr,
-        .table td,
-        .table th {
-            color: #EAECEF;
+        .login-register-btn-group .btn {
+            width: 100%;
+            margin-bottom: 5px;
         }
 
-        .table th {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 0.75rem;
-            font-weight: 500;
-            color: rgba(234, 236, 239, 0.9);
-            /* Brighter table headers */
+        .footer-tabs .nav-link {
+            color: #a0a0a0;
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding: 8px 15px;
         }
 
-        .table td {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 0.75rem 0;
+        .footer-tabs .nav-link.active {
+            color: #ffd700;
+            /* Yellow for active tab */
+            border-color: #ffd700;
+            background-color: transparent;
         }
 
-        .table tbody tr:hover {
-            background: rgba(255, 255, 255, 0.03);
-            /* Subtle hover for table rows */
+        .footer-tabs .nav-link:hover {
+            color: #fff;
         }
 
-        .badge {
-            border-radius: 0.5rem;
-            padding: 0.5em 0.8em;
-            font-weight: 500;
+        .margin-ratio-box {
+            background-color: #212529;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 991.98px) {
-
-            .col-lg-8,
-            .col-lg-4 {
-                padding-left: 0.5rem !important;
-                padding-right: 0.5rem !important;
-            }
-
-            .container-xl {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
-            }
-
-            /* Adjusted card-body padding for smaller screens */
-            .glass-card .card-body,
-            .glass-inner-card .card-body {
-                padding: 1rem !important;
-            }
-
-            .market-ticker span {
-                padding-right: 2rem;
-            }
+        .margin-ratio-box .progress {
+            height: 8px;
+            margin-bottom: 5px;
         }
 
-        @media (max-width: 767.98px) {
-            .card-header .d-flex.align-items-center.gap-2 {
-                flex-direction: column;
-                align-items: flex-start !important;
-                gap: 0.5rem !important;
-            }
-
-            .card-header .d-flex.align-items-center.gap-2 .form-select {
-                width: 100%;
-            }
-
-            .card-header .d-flex.align-items-center.gap-2 .btn {
-                width: 100%;
-            }
-
-            .market-ticker {
-                font-size: 0.8rem;
-            }
-
-            .market-ticker span {
-                padding-right: 1.5rem;
-            }
+        .margin-ratio-box .progress-bar {
+            background-color: #0ecb81;
         }
     </style>
 </head>
 
 <body>
-    <!-- Header - Placeholder removed. Please insert your actual header here. -->
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark shadow-sm py-2 sticky-top ">
-        <div class="container-xl">
+        <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <img src="assets/img/logo.png" alt="logo">
             </a>
@@ -362,536 +258,606 @@
             </div>
         </div>
     </nav>
-    <!-- KEEP YOUR ORIGINAL HEADER HERE -->
 
-    <!-- Market Ticker -->
-    <div class="market-ticker text-light overflow-hidden">
-        <marquee class="d-flex align-items-center">
-            <span><i class="fab fa-btc text-warning me-2"></i> BTC/USDT <span class="text-success fw-bold">+2.1%</span>
-                $65,000</span>
-            <span><i class="fab fa-ethereum text-primary me-2"></i> ETH/USDT <span
-                    class="text-danger fw-bold">-0.8%</span> $3,400</span>
-            <span><i class="fas fa-coins text-info me-2"></i> USDT/USD <span class="text-success fw-bold">+0.01%</span>
-                $1.00</span>
-            <span><i class="fab fa-solana text-purple-500 me-2" style="color: #9945FF;"></i> SOL/USDT <span
-                    class="text-success fw-bold">+5.3%</span> $150</span>
-            <span><i class="fas fa-dollar-sign text-green-500 me-2" style="color: #2ECC71;"></i> BNB/USDT <span
-                    class="text-danger fw-bold">-1.2%</span> $580</span>
-        </marquee>
-    </div>
+    <!-- Main Content -->
+    <main class="py-1">
+        <div class="container-fluid ">
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-custom ">
+                <div class="container-fluid gap-y-5">
+                    <select class="form-select w-auto" aria-label="Default select example" name="" id="">
+                        <option value="BTCUSDT">BTCUSDT</option>
+                        <option value="ETHUSDT">ETHUSDT</option>
+                        <option value="BNBUSDT">BNBUSDT</option>
+                        <option value="XRPUSDT">XRPUSDT</option>
+                        <option value="ADAUSDT">ADAUSDT</option>
+                        <option value="SOLUSDT">SOLUSDT</option>
+                        <option value="DOTUSDT">DOTUSDT DOT</option>
+                    </select>
+                    <ul
+                        class="navbar-nav me-auto mt-2 mb-2 ms-3 text-nowrap mb-lg-0 w-100 gap-3 align-items-center overflow-hidden overflow-x-auto flex-nowrap flex-row white-space-nowrap">
+                        <li class="nav-item me-3 d-flex flex-column align-items-end">
+                            <span class="fw-semibold fs-6 text-red">118,991.6</span>
+                            <span class="fs-6 text-red">-1.27%</span>
+                        </li>
 
-    <main class="container-xl px-4 py-4 flex-grow-1">
-        <div class="row g-4">
+                        <li class="nav-item me-3">
+                            <span class="text-secondary">Index <span class="text-white d-block">118,964.4</span></span>
+                        </li>
+                        <li class="nav-item me-3">
+                            <span class="text-secondary">Funding/Countdown <span class="text-green d-block">0.0100% /
+                                    00:14:58</span></span>
+                        </li>
+                        <li class="nav-item me-3">
+                            <span class="text-secondary">24h High <span
+                                    class="text-white d-block">119,568.4</span></span>
+                        </li>
+                        <li class="nav-item me-3">
+                            <span class="text-secondary">24h Low <span
+                                    class="text-white d-block">115,865.0</span></span>
+                        </li>
+                        <li class="nav-item me-3 text-nowrap">
+                            <span class="text-secondary">24h Volume(USDT) <span
+                                    class="text-white d-block">10,502,718,488.64</span></span>
+                        </li>
+                        <li class="nav-item text-nowrap">
+                            <span class="text-secondary">Open Interest(USDT) <span
+                                    class="text-white d-block">21,444,943,479.42</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-            <!-- Left Panel (Chart + Order Box) -->
-            <div class="col-lg-8">
-                <div class="glass-card h-100">
-                    <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-4">
-                        <h5 class="mb-0 text-yellow d-flex align-items-center gap-3">ETH/USDT Perpetual <span
-                                class="badge bg-secondary">Futures</span></h5>
+            <div class="row gx-2 mt-2">
+                <div class="col-md-8 main-chart-area">
+                    <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                        {
+                        "allow_symbol_change": true,
+                        "calendar": false,
+                        "details": false,
+                        "hide_side_toolbar": true,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "hide_volume": false,
+                        "hotlist": false,
+                        "interval": "D",
+                        "locale": "en",
+                        "save_image": true,
+                        "style": "1",
+                        "symbol": "NASDAQ:AAPL",
+                        "theme": "light",
+                        "timezone": "Etc/UTC",
+                        "backgroundColor": "#ffffff",
+                        "gridColor": "rgba(46, 46, 46, 0.06)",
+                        "watchlist": [],
+                        "withdateranges": false,
+                        "compareSymbols": [],
+                        "studies": [],
+                        "autosize": true
+                        }
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+                </div>
 
-                        <div class="d-flex w-100 flex-wrap gap-3">
-                            <select class="form-select form-select-sm">
-                                <option>ETH/USDT</option>
-                                <option>BTC/USDT</option>
-                                <option>SOL/USDT</option>
-                            </select>
-                            <button data-bs-toggle="button" class="btn btn-outline-warning btn-sm">10m</button>
-                            <button data-bs-toggle="button" class="btn btn-outline-warning btn-sm">30m</button>
-                            <button data-bs-toggle="button" class="btn btn-outline-warning btn-sm">1h</button>
-                        </div>
-                    </div>
-                    <div class="card-body p-4 "> <!-- Increased padding -->
-                        chart will be display here
-                        <!-- TradingView Widget -->
-                        <!-- <iframe class="w-100 rounded-lg" style="height:400px; border: none;"
-                            src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_f42f1&symbol=BINANCE:ETHUSDT&interval=15&hidelegend=1&theme=dark&timezone=Exchange&locale=en"
-                            frameborder="0" allowfullscreen></iframe> -->
-                    </div>
-
-                    <div class="row g-3 px-4 pb-4"> <!-- Adjusted padding -->
-                        <!-- Place Order -->
-                        <div class="col-md-6">
-                            <div class="glass-inner-card h-100">
-                                <div class="card-header text-yellow fw-bold"><i
-                                        class="fas fa-plus-circle me-2"></i>Place Order</div>
-                                <div class="card-body p-4"> <!-- Increased padding -->
-                                    <div class="mb-3">
-                                        <label for="leverage" class="form-label text-white-50">Leverage</label>
-                                        <select class="form-select" id="leverage">
-                                            <option>1x</option>
-                                            <option>5x</option>
-                                            <option>10x</option>
-                                            <option>20x</option>
-                                            <option>50x</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="orderType" class="form-label text-white-50">Order Type</label>
-                                        <select class="form-select" id="orderType">
-                                            <option>Market</option>
-                                            <option>Limit</option>
-                                            <option>Stop Limit</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="amount" class="form-label text-white-50">Amount (USDT)</label>
-                                        <input type="number" class="form-control" id="amount" placeholder="e.g., 100">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="stopLoss" class="form-label text-white-50">Stop Loss (Price)</label>
-                                        <input type="number" class="form-control" id="stopLoss" placeholder="Optional">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for="takeProfit" class="form-label text-white-50">Take Profit
-                                            (Price)</label>
-                                        <input type="number" class="form-control" id="takeProfit"
-                                            placeholder="Optional">
-                                    </div>
-                                    <div class="d-flex gap-3">
-                                        <button class="btn buy w-100">Buy / Long</button>
-                                        <button class="btn sell w-100">Sell / Short</button>
-                                    </div>
-                                </div>
+                <!-- middle section -->
+                <div class="col-md-2">
+                    <!-- Order Book Header -->
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                        <h5>Order Book</h5>
+                        <div>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-dark active">Cross</button>
+                                <button type="button" class="btn btn-dark">Isolated</button>
                             </div>
-                        </div>
+                            <div class="btn-group btn-group-sm ms-2" role="group">
+                                <button type="button" class="btn btn-dark active">20x</button>
+                                <button type="button" class="btn btn-dark">50x</button>
+                            </div>
 
-                        <!-- Order Book / Trade History -->
-                        <div class="col-md-6">
-                            <div class="glass-inner-card h-100">
-                                <div class="card-header d-flex justify-content-between">
-                                    <ul class="nav nav-tabs border-0" id="orderBookTabs" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="orderbook-tab" data-bs-toggle="tab"
-                                                data-bs-target="#orderbook" type="button" role="tab"
-                                                aria-controls="orderbook" aria-selected="true">Order Book</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="tradehistory-tab" data-bs-toggle="tab"
-                                                data-bs-target="#tradehistory" type="button" role="tab"
-                                                aria-controls="tradehistory" aria-selected="false">Trade
-                                                History</button>
-                                        </li>
+                        </div>
+                    </div>
+
+                    <!-- Trades Movers (similar to recent trades) -->
+                    <div class="custom-card mt-3 p-0">
+                        <h6 class="p-2 border-bottom border-secondary">Trades Movers</h6>
+                        <table class="table table-dark table-sm order-book-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-secondary">Price (USDT)</th>
+                                    <th class="text-secondary text-end">Amount</th>
+                                    <th class="text-secondary text-end">Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Example trades -->
+                                <tr>
+                                    <td class="text-green">118,991.6</td>
+                                    <td class="text-end">4.446</td>
+                                    <td class="text-end">21:13:01</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-red">118,911.3</td>
+                                    <td class="text-end">3.414</td>
+                                    <td class="text-end">21:13:01</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-green">118,822.1</td>
+                                    <td class="text-end">0.319</td>
+                                    <td class="text-end">21:13:00</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-red">118,825.6</td>
+                                    <td class="text-end">0.462</td>
+                                    <td class="text-end">21:13:00</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-green">118,948.1</td>
+                                    <td class="text-end">10.265</td>
+                                    <td class="text-end">21:12:59</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-red">118,962.9</td>
+                                    <td class="text-end">0.109</td>
+                                    <td class="text-end">21:12:58</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Order Book Content -->
+                    <div class="custom-card p-0 mb-3">
+                        <table class="table table-dark table-sm order-book-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-secondary price-col">Price (USDT)</th>
+                                    <th class="text-secondary amount-col">Amount</th>
+                                    <th class="text-secondary sum-col">Sum (BTC)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Sell Orders -->
+                                <tr>
+                                    <td class="text-red">118,995.3</td>
+                                    <td class="text-right">0.979</td>
+                                    <td class="text-right">10.956</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-red">118,994.8</td>
+                                    <td class="text-right">1.471</td>
+                                    <td class="text-right">9.977</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-red">118,994.3</td>
+                                    <td class="text-right">0.264</td>
+                                    <td class="text-right">8.506</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-red">118,993.8</td>
+                                    <td class="text-right">0.292</td>
+                                    <td class="text-right">8.242</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-red">118,992.5</td>
+                                    <td class="text-right">0.625</td>
+                                    <td class="text-right">7.109</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-red">118,992.3</td>
+                                    <td class="text-right">0.253</td>
+                                    <td class="text-right">7.264</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-red">118,991.8</td>
+                                    <td class="text-right">6.932</td>
+                                    <td class="text-right">6.931</td>
+                                </tr>
+                                <!-- Current Price -->
+                                <tr>
+                                    <td colspan="3" class="text-center py-2">
+                                        <span class="h5 text-red">118,991.6</span> <span
+                                            class="text-secondary">≈118,991.64</span>
+                                    </td>
+                                </tr>
+                                <!-- Buy Orders -->
+                                <tr>
+                                    <td class="text-green">118,991.5</td>
+                                    <td class="text-right">0.001</td>
+                                    <td class="text-right">0.001</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-green">118,991.2</td>
+                                    <td class="text-right">0.003</td>
+                                    <td class="text-right">0.002</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-green">118,991.0</td>
+                                    <td class="text-right">0.002</td>
+                                    <td class="text-right">0.007</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-green">118,990.8</td>
+                                    <td class="text-right">0.002</td>
+                                    <td class="text-right">0.009</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-green">118,990.4</td>
+                                    <td class="text-right">0.001</td>
+                                    <td class="text-right">0.012</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-green">118,990.0</td>
+                                    <td class="text-right">0.005</td>
+                                    <td class="text-right">0.015</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-green">118,989.8</td>
+                                    <td class="text-right">0.002</td>
+                                    <td class="text-right">0.017</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- middle section -->
+
+                <!-- Right Order Book & Trade Form Sidebar -->
+                <div class="col-md-2 order-book-sidebar">
+
+
+                    <!-- Trade Form Section -->
+                    <div class="trade-form-section">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <ul class="nav nav-pills trade-form-tabs bg-secondary rounded" id="tradeFormTab"
+                                role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active text-white" id="limit-tab" data-bs-toggle="tab"
+                                        data-bs-target="#limit" type="button" role="tab" aria-controls="limit"
+                                        aria-selected="true">Limit</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link text-white" id="market-tab" data-bs-toggle="tab"
+                                        data-bs-target="#market" type="button" role="tab" aria-controls="market"
+                                        aria-selected="false">Market</button>
+                                </li>
+                                <li class="nav-item dropdown" role="presentation">
+                                    <button class="nav-link dropdown-toggle text-white" id="stop-limit-tab"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Stop-Limit
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="stop-limit-tab">
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="tab"
+                                                data-bs-target="#stop-limit" role="tab"
+                                                aria-controls="stop-limit">Stop-Limit</a></li>
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="tab" data-bs-target="#oco"
+                                                role="tab" aria-controls="oco">OCO</a></li>
                                     </ul>
-                                </div>
-                                <div class="card-body p-4"> <!-- Increased padding -->
-                                    <div class="tab-content" id="orderBookTabsContent">
-                                        <div class="tab-pane fade show active" id="orderbook" role="tabpanel"
-                                            aria-labelledby="orderbook-tab">
-                                            <div class="table-responsive">
-                                                <table class="table table-sm text-nowrap">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Price (USDT)</th>
-                                                            <th>Amount (ETH)</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="text-danger">3,505.00</td>
-                                                            <td>0.05</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-danger">3,502.50</td>
-                                                            <td>0.12</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-danger">3,500.00</td>
-                                                            <td>0.25</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-danger">3,498.00</td>
-                                                            <td>0.18</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-danger">3,495.50</td>
-                                                            <td>0.07</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-success">3,485.00</td>
-                                                            <td>0.18</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-success">3,482.50</td>
-                                                            <td>0.09</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-success">3,480.00</td>
-                                                            <td>0.31</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-success">3,478.00</td>
-                                                            <td>0.15</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-success">3,475.50</td>
-                                                            <td>0.06</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="tradehistory" role="tabpanel"
-                                            aria-labelledby="tradehistory-tab">
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless table-sm text-nowrap">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Price (USDT)</th>
-                                                            <th>Amount (ETH)</th>
-                                                            <th>Time</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="text-success">3,485.10</td>
-                                                            <td>0.05</td>
-                                                            <td>14:30:05</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-danger">3,485.00</td>
-                                                            <td>0.10</td>
-                                                            <td>14:30:02</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-success">3,485.20</td>
-                                                            <td>0.08</td>
-                                                            <td>14:29:58</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-success">3,485.15</td>
-                                                            <td>0.12</td>
-                                                            <td>14:29:55</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-danger">3,485.05</td>
-                                                            <td>0.07</td>
-                                                            <td>14:29:50</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-success">3,485.10</td>
-                                                            <td>0.05</td>
-                                                            <td>14:30:05</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-danger">3,485.00</td>
-                                                            <td>0.10</td>
-                                                            <td>14:30:02</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-success">3,485.20</td>
-                                                            <td>0.08</td>
-                                                            <td>14:29:58</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-success">3,485.15</td>
-                                                            <td>0.12</td>
-                                                            <td>14:29:55</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="text-danger">3,485.05</td>
-                                                            <td>0.07</td>
-                                                            <td>14:29:50</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content">
+                            <!-- Limit Tab Content -->
+                            <div class="tab-pane fade show active" id="limit" role="tabpanel"
+                                aria-labelledby="limit-tab">
+                                <form>
+                                    <div class="mb-2">
+                                        <label for="available-limit" class="form-label text-white"
+                                            style="font-size: 0.7rem;">Avbl - USDT</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control 1" id="available-limit"
+                                                placeholder="0 USDT">
+                                            <span class="input-group-text bg-dark text-white">
+                                                %
+                                            </span>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="mb-2">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control 1" placeholder="Price">
+                                            <button class="btn btn-dark btn-sm" type="button">BBO</button>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control" placeholder="Size">
+                                            <span class="input-group-text bg-secondary text-white">BTC</span>
+                                            <button class="btn btn-secondary btn-sm dropdown-toggle border border-light"
+                                                type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                            <ul class="dropdown-menu dropdown-menu-dark">
+                                                <li><a class="dropdown-item" href="#">USDT</a></li>
+                                                <li><a class="dropdown-item" href="#">BTC</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3 mt-3">
+                                        <button type="button" class="btn btn-sm btn-secondary">25%</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">50%</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">75%</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">100%</button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-green-custom w-100 mb-2">Register
+                                            Now</button>
+                                        <button type="submit" class="btn btn-secondary w-100">Log In</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Market Tab Content -->
+                            <div class="tab-pane fade" id="market" role="tabpanel" aria-labelledby="market-tab">
+                                <form>
+                                    <div class="mb-2">
+                                        <label for="available-market" class="form-label text-white"
+                                            style="font-size: 0.7rem;">Avbl - USDT</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control" id="available-market"
+                                                value="0 USDT">
+                                            <span class="input-group-text bg-dark text-white">
+                                                %
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control" placeholder="Size">
+                                            <span class="input-group-text bg-secondary text-white">BTC</span>
+                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                            <ul class="dropdown-menu dropdown-menu-dark">
+                                                <li><a class="dropdown-item" href="#">USDT</a></li>
+                                                <li><a class="dropdown-item" href="#">BTC</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3 mt-3">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">25%</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">50%</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">75%</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">100%</button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-green-custom w-100 mb-2">Register
+                                            Now</button>
+                                        <button type="submit" class="btn btn-secondary w-100">Log In</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Stop-Limit Tab Content -->
+                            <div class="tab-pane fade" id="stop-limit" role="tabpanel" aria-labelledby="stop-limit-tab">
+                                <form>
+                                    <div class="mb-2">
+                                        <label for="available-stop-limit" class="form-label text-white
+                                        style=" font-size: 0.7rem;">Avbl - USDT</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control" id="available-stop-limit"
+                                                value="0 USDT" readonly>
+                                            <span class="input-group-text bg-secondary text-white">
+                                                %
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control " placeholder="Stop Price">
+                                            <span class="input-group-text bg-secondary text-white">Mark</span>
+                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                            <ul class="dropdown-menu dropdown-menu-dark">
+                                                <li><a class="dropdown-item" href="#">Last</a></li>
+                                                <li><a class="dropdown-item" href="#">Mark</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control " placeholder="Limit Price">
+                                            <span class="input-group-text bg-secondary text-white">USDT</span>
+                                            <button class="btn btn-secondary btn-sm" type="button">BBO</button>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control " placeholder="Size">
+                                            <span class="input-group-text bg-secondary text-white">BTC</span>
+                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                            <ul class="dropdown-menu dropdown-menu-dark">
+                                                <li><a class="dropdown-item" href="#">USDT</a></li>
+                                                <li><a class="dropdown-item" href="#">BTC</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3 mt-3">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">25%</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">50%</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">75%</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">100%</button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-green-custom w-100 mb-2">Register
+                                            Now</button>
+                                        <button type="submit" class="btn btn-secondary w-100">Log In</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- OCO Tab Content (Example for dropdown) -->
+                            <div class="tab-pane fade" id="oco" role="tabpanel" aria-labelledby="stop-limit-tab">
+                                <form>
+                                    <p class="text-secondary">OCO (One-Cancels-the-Other) content goes here.</p>
+                                    <div class="mb-2">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control " placeholder="Price">
+                                            <span class="input-group-text bg-secondary text-white">USDT</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control " placeholder="Stop Price">
+                                            <span class="input-group-text bg-secondary text-white">USDT</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control " placeholder="Limit Price">
+                                            <span class="input-group-text bg-secondary text-white">USDT</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-green-custom w-100 mb-2">Register
+                                            Now</button>
+                                        <button type="submit" class="btn btn-secondary w-100">Log In</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 
-            <!-- Right Panel -->
-            <div class="col-lg-4">
-                <!-- Account Section -->
-                <div class="glass-card mb-4">
-                    <div class="card-header text-yellow fw-bold"><i class="fas fa-wallet me-2"></i>Account Overview
-                    </div>
-                    <div class="card-body p-4"> <!-- Increased padding -->
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>Total Equity:</span>
-                            <span class="text-white fw-bold">986.471 USDT</span>
+            <div class="row gx-3 gy-4 mt-2 tabs-bottom-section">
+                <div class="col-md-9">
+                    <ul class="nav nav-tabs footer-tabs overflow-x-auto flex-nowrap text-nowrap" id="myTab"
+                        role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="positions-tab" data-bs-toggle="tab"
+                                data-bs-target="#positions" type="button" role="tab" aria-controls="positions"
+                                aria-selected="true">Positions(0)</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="open-orders-tab" data-bs-toggle="tab"
+                                data-bs-target="#open-orders" type="button" role="tab" aria-controls="open-orders"
+                                aria-selected="false">Open
+                                Orders(0)</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="order-history-tab" data-bs-toggle="tab"
+                                data-bs-target="#order-history" type="button" role="tab" aria-controls="order-history"
+                                aria-selected="false">Order History</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="trade-history-tab" data-bs-toggle="tab"
+                                data-bs-target="#trade-history" type="button" role="tab" aria-controls="trade-history"
+                                aria-selected="false">Trade History</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="transaction-history-tab" data-bs-toggle="tab"
+                                data-bs-target="#transaction-history" type="button" role="tab"
+                                aria-controls="transaction-history" aria-selected="false">Transaction History</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="bots-tab" data-bs-toggle="tab" data-bs-target="#bots"
+                                type="button" role="tab" aria-controls="bots" aria-selected="false">Bots</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="assets-tab" data-bs-toggle="tab" data-bs-target="#assets"
+                                type="button" role="tab" aria-controls="assets" aria-selected="false">Assets</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content border border-secondary p-3 mt-1"
+                        style="background-color: #2b3035; color: #a0a0a0;min-height: 156px;">
+                        <!-- Positions Tab Content -->
+                        <div class="tab-pane fade show active" id="positions" role="tabpanel"
+                            aria-labelledby="positions-tab">
+                            <div class="table-responsive">
+                                <table class="table table-dark text-nowrap table-sm mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Position</th>
+                                            <th>Entry Price</th>
+                                            <th>Unrealized PnL</th>
+                                            <th>Margin</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>BTCUSDT</td>
+                                            <td>Long</td>
+                                            <td>118,991.6</td>
+                                            <td class="text-green">+0.00 USDT</td>
+                                            <td>0.0000 USDT</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ETHUSDT</td>
+                                            <td>Short</td>
+                                            <td>2,000.00</td>
+                                            <td class="text-red">-0.00 USDT</td>
+                                            <td>0.0000 USDT</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>Margin Balance:</span>
-                            <span class="text-white fw-bold">986.108 USDT</span>
+                        <!-- Open Orders Tab Content -->
+                        <div class="tab-pane fade" id="open-orders" role="tabpanel" aria-labelledby="open-orders-tab">
+                            <p>Content for Open Orders tab will be displayed here.</p>
                         </div>
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>Unrealized PnL:</span>
-                            <span class="text-danger fw-bold">-46.007 USDT</span>
+                        <!-- Order History Tab Content -->
+                        <div class="tab-pane fade" id="order-history" role="tabpanel"
+                            aria-labelledby="order-history-tab">
+                            <p>Content for Order History tab will be displayed here.</p>
                         </div>
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>Available Margin:</span>
-                            <span class="text-white fw-bold">1.111 USDT</span>
+                        <!-- Trade History Tab Content -->
+                        <div class="tab-pane fade" id="trade-history" role="tabpanel"
+                            aria-labelledby="trade-history-tab">
+                            <p>Content for Trade History tab will be displayed here.</p>
                         </div>
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>In Order:</span>
-                            <span class="text-white fw-bold">0 USDT</span>
+                        <!-- Transaction History Tab Content -->
+                        <div class="tab-pane fade" id="transaction-history" role="tabpanel"
+                            aria-labelledby="transaction-history-tab">
+                            <p>Content for Transaction History tab will be displayed here.</p>
                         </div>
-                        <hr class="border-secondary my-3">
-                        <div class="d-flex justify-content-between">
-                            <button class="btn btn-outline-warning btn-sm w-100 me-2">Deposit</button>
-                            <button class="btn btn-outline-warning btn-sm w-100">Withdraw</button>
+                        <!-- Bots Tab Content -->
+                        <div class="tab-pane fade" id="bots" role="tabpanel" aria-labelledby="bots-tab">
+                            <p>Content for Bots tab will be displayed here.</p>
+                        </div>
+                        <!-- Assets Tab Content -->
+                        <div class="tab-pane fade" id="assets" role="tabpanel" aria-labelledby="assets-tab">
+                            <p>Content for Assets tab will be displayed here.</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Market Info Section -->
-                <div class="glass-card mb-4">
-                    <div class="card-header text-yellow fw-bold"><i class="fas fa-chart-line me-2"></i>Market Info</div>
-                    <div class="card-body p-4"> <!-- Increased padding -->
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>Mark Price:</span>
-                            <span class="text-white fw-bold">3,482.12</span>
+                <div class="col-md-3 footer-account-info">
+                    <h6>Account</h6>
+                    <div class="margin-ratio-box">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <small class="text-secondary">Margin Ratio</small>
+                            <small class="text-green">1.00%</small>
                         </div>
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>24h Change:</span>
-                            <span class="text-success fw-bold">+2.1%</span>
+                        <div class="progress mb-2" role="progressbar" aria-label="Margin Ratio" aria-valuenow="10"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar" style="width: 10%"></div>
                         </div>
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>Funding Rate:</span>
-                            <span class="text-white fw-bold">0.0100%</span>
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <small class="text-secondary">Maintenance Margin</small>
+                            <small>0.0000 USDT</small>
                         </div>
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>24h High:</span>
-                            <span class="text-white fw-bold">3,520.00</span>
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <small class="text-secondary">Margin Balance</small>
+                            <small>0.0000 USDT</small>
                         </div>
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>24h Low:</span>
-                            <span class="text-white fw-bold">3,450.00</span>
-                        </div>
-                        <div class="mb-2 d-flex justify-content-between">
-                            <span>24h Volume (ETH):</span>
-                            <span class="text-white fw-bold">12,500</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- User Profile / Quick Settings -->
-                <div class="glass-card mb-4">
-                    <div class="card-header text-yellow fw-bold"><i class="fas fa-user-circle me-2"></i>User Actions
-                    </div>
-                    <div class="card-body p-4"> <!-- Increased padding -->
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-outline-warning text-start"><i
-                                    class="fas fa-cog me-2"></i>Settings</button>
-                            <button class="btn btn-outline-warning text-start"><i
-                                    class="fas fa-history me-2"></i>Transaction History</button>
-                            <button class="btn btn-outline-warning text-start"><i
-                                    class="fas fa-bell me-2"></i>Alerts</button>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="btn btn-sm btn-outline-secondary">Transfer</button>
+                            <button class="btn btn-sm btn-outline-secondary">Buy Crypto</button>
+                            <button class="btn btn-sm btn-outline-secondary">Swap</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- New Row for Open Orders & Positions -->
-        <div class="row g-4 mt-4">
-            <div class="col-12">
-                <div class="glass-card">
-                    <div class="card-header d-flex flex-wrap gap-3 justify-content-between align-items-center">
-                        <h5 class="mb-0 text-yellow fw-bold"><i class="fas fa-list-alt me-2"></i>Open Orders & Positions
-                        </h5>
-                        <ul class="nav nav-tabs border-0" id="orderPositionTabs" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="openorders-tab" data-bs-toggle="tab"
-                                    data-bs-target="#openorders" type="button" role="tab" aria-controls="openorders"
-                                    aria-selected="true">Open Orders</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="positions-tab" data-bs-toggle="tab"
-                                    data-bs-target="#positions" type="button" role="tab" aria-controls="positions"
-                                    aria-selected="false">Positions</button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body p-4"> <!-- Increased padding -->
-                        <div class="tab-content" id="orderPositionTabsContent">
-                            <div class="tab-pane fade show active" id="openorders" role="tabpanel"
-                                aria-labelledby="openorders-tab">
-                                <div class="table-responsive">
-                                    <table class="table table-borderless table-sm text-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th>Pair</th>
-                                                <th>Type</th>
-                                                <th>Side</th>
-                                                <th>Price</th>
-                                                <th>Amount</th>
-                                                <th>Filled</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>ETH/USDT</td>
-                                                <td>Limit</td>
-                                                <td class="text-success">BUY</td>
-                                                <td>3,450.00</td>
-                                                <td>0.5 ETH</td>
-                                                <td>0%</td>
-                                                <td><button class="btn btn-danger btn-sm">Cancel</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>BTC/USDT</td>
-                                                <td>Limit</td>
-                                                <td class="text-danger">SELL</td>
-                                                <td>66,000.00</td>
-                                                <td>0.01 BTC</td>
-                                                <td>0%</td>
-                                                <td><button class="btn btn-danger btn-sm">Cancel</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="positions" role="tabpanel" aria-labelledby="positions-tab">
-                                <div class="table-responsive">
-                                    <table class="table table-borderless table-sm text-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th>Pair</th>
-                                                <th>Side</th>
-                                                <th>Amount</th>
-                                                <th>Entry Price</th>
-                                                <th>Mark Price</th>
-                                                <th>Liq. Price</th>
-                                                <th>PnL (USDT)</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>ETH/USDT</td>
-                                                <td class="text-success">LONG</td>
-                                                <td>0.1 ETH</td>
-                                                <td>3,520.00</td>
-                                                <td>3,482.12</td>
-                                                <td>3,000.00</td>
-                                                <td class="text-danger">-3.78 USDT</td>
-                                                <td><button class="btn btn-outline-warning btn-sm">Close</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>SOL/USDT</td>
-                                                <td class="text-danger">SHORT</td>
-                                                <td>0.5 SOL</td>
-                                                <td>152.00</td>
-                                                <td>150.00</td>
-                                                <td>160.00</td>
-                                                <td class="text-success">+1.00 USDT</td>
-                                                <td><button class="btn btn-outline-warning btn-sm">Close</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- New Row for Market Overview & News -->
-        <div class="row g-4 mt-4">
-            <div class="col-lg-6">
-                <div class="glass-card h-100">
-                    <div class="card-header text-yellow fw-bold"><i class="fas fa-star me-2"></i>Market Watchlist / Top
-                        Movers</div>
-                    <div class="card-body p-4"> <!-- Increased padding -->
-                        <div class="table-responsive">
-                            <table class="table table-borderless table-sm text-nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>Pair</th>
-                                        <th>Price</th>
-                                        <th>24h Change</th>
-                                        <th>Volume</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>BTC/USDT</td>
-                                        <td>$65,000</td>
-                                        <td class="text-success">+2.1%</td>
-                                        <td>500M</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ETH/USDT</td>
-                                        <td>$3,400</td>
-                                        <td class="text-danger">-0.8%</td>
-                                        <td>300M</td>
-                                    </tr>
-                                    <tr>
-                                        <td>SOL/USDT</td>
-                                        <td>$150</td>
-                                        <td class="text-success">+5.3%</td>
-                                        <td>120M</td>
-                                    </tr>
-                                    <tr>
-                                        <td>BNB/USDT</td>
-                                        <td>$580</td>
-                                        <td class="text-danger">-1.2%</td>
-                                        <td>80M</td>
-                                    </tr>
-                                    <tr>
-                                        <td>XRP/USDT</td>
-                                        <td>$0.52</td>
-                                        <td class="text-success">+0.5%</td>
-                                        <td>60M</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="glass-card h-100">
-                    <div class="card-header text-yellow fw-bold"><i class="fas fa-newspaper me-2"></i>Crypto News &
-                        Analysis</div>
-                    <div class="card-body p-4"> <!-- Increased padding -->
-                        <ul class="list-unstyled">
-                            <li class="mb-3 pb-2 border-bottom border-secondary border-opacity-25">
-                                <a href="#" class="text-white text-decoration-none fw-bold d-block mb-1">Bitcoin Halving
-                                    Impact: What to Expect Next</a>
-                                <span class="text-white-50 small">CoinDesk - 2 hours ago</span>
-                            </li>
-                            <li class="mb-3 pb-2 border-bottom border-secondary border-opacity-25">
-                                <a href="#" class="text-white text-decoration-none fw-bold d-block mb-1">Ethereum's
-                                    Dencun Upgrade Boosts Layer 2 Activity</a>
-                                <span class="text-white-50 small">Decrypt - 5 hours ago</span>
-                            </li>
-                            <li class="mb-3 pb-2 border-bottom border-secondary border-opacity-25">
-                                <a href="#" class="text-white text-decoration-none fw-bold d-block mb-1">New AI Trends
-                                    in Crypto Trading: A Deep Dive</a>
-                                <span class="text-white-50 small">Blockworks - 1 day ago</span>
-                            </li>
-                            <li class="mb-3 pb-2 border-bottom border-secondary border-opacity-25">
-                                <a href="#" class="text-white text-decoration-none fw-bold d-block mb-1">Solana
-                                    Ecosystem Sees Surge in DeFi Projects</a>
-                                <span class="text-white-50 small">The Block - 2 days ago</span>
-                            </li>
-                            <li>
-                                <a href="#" class="text-white text-decoration-none fw-bold d-block mb-1">Regulatory
-                                    Scrutiny Intensifies for Stablecoins</a>
-                                <span class="text-white-50 small">Bloomberg - 3 days ago</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </main>
 
-    <!-- Footer - Placeholder removed. Please insert your actual footer here. -->
     <!-- Footer -->
     <footer class="footer mt-5 pt-4 pb-2 bg-transparent text-light px-2">
-        <div class="container-xl bg-dark p-4 rounded-4  shadow">
+        <div class="container-fluid bg-dark p-4 rounded-4  shadow">
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <img src="assets/img/logo.png" alt="logo" style="max-width: 160px;">
@@ -935,10 +901,9 @@
             </div>
         </div>
     </footer>
-    <!-- KEEP YOUR ORIGINAL FOOTER HERE -->
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
